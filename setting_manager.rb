@@ -12,14 +12,13 @@ class Setting_Manager
   def add_project(project_name, branch_name)
     settings = get_settings
     project = {project_name => {'current_branch' => branch_name}}
-    
+
     if settings['default']['projects'].nil?
-      project = {'projects' => {project_name => {'current_branch' => branch_name}}}  
+      project = {'projects' => {project_name => {'current_branch' => branch_name}}}
       settings['default'].merge!(project)
     else
       settings['default']['projects'].merge!(project)
     end
-    puts settings.inspect
     save_yaml(settings)
   end
 
