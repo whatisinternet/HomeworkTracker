@@ -65,7 +65,6 @@ class HomeWork
 	def save_for_now(project_name)
 
 		current_branch = @@setting_manager.get_branch(project_name)
-		puts version.to_s
 		if project_name.nil?
 			puts "Missing project name!"
 		else
