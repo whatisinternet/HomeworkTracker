@@ -51,13 +51,7 @@ class HomeWork
 		if project_name.nil?
 			puts "Missing project name!"
 		else
-			exec("
-			cd #{@@default_directory}#{project_name.to_s} &&
-			git checkout master &&
-			git merge #{current_branch} &&
-			git commit -m #{current_branch} &&
-			git branch -D #{current_branch} &&
-			git checkout -b #{new_branch_name}")
+			exec("cd #{@@default_directory}#{project_name.to_s} && git checkout master && git merge #{current_branch} && git commit -m #{current_branch} && git branch -D #{current_branch} && git checkout -b #{new_branch_name}")
 		end
 	end
 
