@@ -65,7 +65,7 @@ class Setting_Manager
 
   def update_version(project_name)
     version = get_version(project_name)
-    version += .1
+    version += 0.1
   end
 
 end
