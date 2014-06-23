@@ -43,10 +43,16 @@ class Setting_Manager
     settings = YAML::load(File.open("#{root_path}/settings.yml"))
   end
 
+  def get_version(project_name)
+    settings = get_settings
+    settings['default']['projects'][project_name]['version'].chomp.gsub('/n','')
+  end
+
   def set_branch(project_name, branch_name)
     begin
       settings = get_settings
       settings['default']['projects'][project_name]['current_branch'] = branch_name
+      settings['default']['projects'][project_name]['version'] = update_version(project_name)
 
       root_path = File.dirname(__FILE__)
       File.open("#{root_path}/settings.yml", "w") do |f|
@@ -55,6 +61,11 @@ class Setting_Manager
     rescue
       add_project(project_name, branch_name)
     end
+  end
+
+  def update_version(project_name)
+    version = get_version(project_name)
+    version += .1
   end
 
 end
