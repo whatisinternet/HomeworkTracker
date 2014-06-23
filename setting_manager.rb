@@ -14,7 +14,7 @@ class Setting_Manager
     project = {project_name => {'current_branch' => branch_name}}
 
     if settings['default']['projects'].nil?
-      project = {'projects' => {project_name => {{'current_branch' => branch_name}, {'version' => '0.0'}}}}
+      project = {'projects' => {project_name => {'current_branch' => branch_name, 'version' => '0.0'}}}
       settings['default'].merge!(project)
     else
       settings['default']['projects'].merge!(project)
@@ -41,7 +41,7 @@ class Setting_Manager
     settings = get_settings
     version = settings['default']['projects'][project_name]['version'].to_s.chomp
     if version.nil?
-      project = {'projects' => {project_name => {{'current_branch' => branch_name}, {'version' => '0.0'}}}}
+      project = {'projects' => {project_name => {'current_branch' => branch_name,'version' => '0.0'}}}
       settings['default'].merge!(project)
       get_version(project_name)
     end
