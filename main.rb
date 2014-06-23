@@ -6,7 +6,6 @@
 #!/usr/bin/env ruby
 
 require_relative 'homework'
-require_relative 'setting_manager'
 require_relative 'project_watcher'
 
 class Main
@@ -30,7 +29,6 @@ class Main
 			hw = HomeWork.new
 			hw.show_log(project)
 		elsif command.to_s == 'watch'
-			hw = HomeWork.new
 			pw = Project_Watcher.new
 		  	p1 = fork { pw.watch_project(project) }
 		  	Process.detach(p1)
