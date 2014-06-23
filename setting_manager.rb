@@ -12,7 +12,13 @@ class Setting_Manager
   def add_project(project_name, branch_name)
     settings = get_settings
     project = {project_name => {'current_branch' => branch_name}}
-    settings['default']['projects'].merge!(project)
+    
+    if settings['default']['projects'].nil?
+      project = {'projects' => {project_name => {'current_branch' => branch_name}}}  
+      settings['default'].merge!(project)
+    else
+      settings['default']['projects'].merge!(project)
+    end
     puts settings.inspect
     root_path = File.dirname(__FILE__)
     File.open("#{root_path}/settings.yml", "w") do |f|

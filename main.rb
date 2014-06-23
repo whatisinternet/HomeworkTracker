@@ -9,28 +9,42 @@ require_relative 'homework'
 require_relative 'setting_manager'
 require_relative 'project_watcher'
 
+require 'fileutils'
+require 'time'
+require 'yaml'
+
 class Main
 	def run(command, project)
-		hw = HomeWork.new
+		
 		#puts hw.branch_generator('')
 		if command == 'create'
+			hw = HomeWork.new
 			hw.create(project)
 			puts "Successfully created project #{project}"
 		elsif command == 'save'
+			hw = HomeWork.new
 			hw.save_for_now(project)
 		elsif command == 'undo'
+			hw = HomeWork.new
 			hw.undo(project)
 		elsif command.to_s == 'save!'
+			hw = HomeWork.new
 			hw.save(project)
 		elsif command.to_s == 'changes?'
+			hw = HomeWork.new
 			hw.show_log(project)
 		elsif command.to_s == 'watch?'
+			hw = HomeWork.new
 			pw = Project_Watcher.new
 		  	p1 = fork { pw.watch_project(project) }
 		  	Process.detach(p1)
 		elsif command.to_s == 'start'
-			sm = Setting_Manager.new
-			sm.create
+		    settings = {'default' => {'directory' => 'HomeworkTracker/projects/',
+		                              'projects' => ''}}
+		    root_path = File.dirname(__FILE__)
+		    File.open("#{root_path}/settings.yml", "w") do |f|
+		      f  << settings.to_yaml
+		    end
 		else
 			puts ""
 			puts "Usage: homework [command] [project name]"
