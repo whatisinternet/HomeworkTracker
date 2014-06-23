@@ -33,11 +33,11 @@ class Setting_Manager
       File.open("#{root_path}/settings.yml", "w") do |f|
         f  << settings.to_yaml
       end
-    rescue NoMethodError
+    rescue
       add_project(project_name, branch_name)
     end
   end
-  
+
   def add_project(project_name, branch_name)
     settings = get_settings
     project = {project_name => {current_branch => branch_name}}
