@@ -40,7 +40,7 @@ class Setting_Manager
 
   def add_project(project_name, branch_name)
     settings = get_settings
-    project = {project_name => {current_branch => branch_name}}
+    project = {project_name => {'current_branch' => branch_name}}
     settings['default']['projects'].merge(project)
   end
 
