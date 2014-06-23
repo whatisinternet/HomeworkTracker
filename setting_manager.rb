@@ -58,7 +58,7 @@ class Setting_Manager
       save_yaml(settings)
     rescue
       add_project(project_name, branch_name)
-    end#
+    end
   end
 
   def update_version(project_name)
