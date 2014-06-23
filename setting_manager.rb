@@ -45,7 +45,7 @@ class Setting_Manager
 
   def get_version(project_name)
     settings = get_settings
-    settings['default']['projects'][project_name]['version'].chomp.gsub('/n','')
+    settings['default']['projects'][project_name]['version']
   end
 
   def set_branch(project_name, branch_name)
