@@ -47,6 +47,7 @@ class HomeWork
 
 		current_branch = @@setting_manager.get_branch(project_name)
 		new_branch_name = branch_generator(project_name)
+		version = @@setting_manager.get_version(project_name)
 		if project_name.nil?
 			puts "Missing project name!"
 		else
@@ -55,6 +56,7 @@ class HomeWork
 			git checkout master &&
 			git merge #{current_branch} &&
 			git branch -D #{current_branch} &&
+			git tag v#{version.to_s.chomp} &&
 			git checkout -b #{new_branch_name}
 			")
 		end
@@ -63,7 +65,6 @@ class HomeWork
 	def save_for_now(project_name)
 
 		current_branch = @@setting_manager.get_branch(project_name)
-		version = @@setting_manager.get_version(project_name)
 		puts version.to_s
 		if project_name.nil?
 			puts "Missing project name!"
@@ -71,8 +72,7 @@ class HomeWork
 			exec("
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git add --all . &&
-			git commit -m #{current_branch} &&
-			git tag v#{version.to_s.chomp}
+			git commit -m #{current_branch}
 			")
 		end
 	end
