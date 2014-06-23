@@ -54,15 +54,14 @@ class HomeWork
 	def save_for_now(project_name)
 
 		current_branch = @@setting_manager.get_branch(project_name)
-		version = @@setting_manager.get_version(project_name)
+		#version = @@setting_manager.get_version(project_name)
 		if project_name.nil?
 			puts "Missing project name!"
 		else
 			exec("
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git add --all . &&
-			git commit -m #{current_branch} &&
-			git tag -a v#{version.to_s} -m #{current_branch}")
+			git commit -m #{current_branch}")
 		end
 	end
 
