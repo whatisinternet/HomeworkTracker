@@ -49,4 +49,13 @@ class Setting_Manager
     end
   end
 
+  def create_project(project_name)
+    settings = {'default' => {'directory' => 'HomeworkTracker/projects/',
+                              'projects' => ''}}
+    root_path = File.dirname(__FILE__)
+    File.open("#{root_path}/settings.yml", "w") do |f|
+      f  << settings.to_yaml
+    end
+  end
+
 end
