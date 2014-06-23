@@ -25,13 +25,23 @@ class Setting_Manager
   end
 
   def set_branch(project_name, branch_name)
-    settings = get_settings
-    settings['default']['projects'][project_name]['current_branch'] = branch_name
+    begin
+      settings = get_settings
+      settings['default']['projects'][project_name]['current_branch'] = branch_name
 
-    root_path = File.dirname(__FILE__)
-    File.open("#{root_path}/settings.yml", "w") do |f|
-      f  << settings.to_yaml
+      root_path = File.dirname(__FILE__)
+      File.open("#{root_path}/settings.yml", "w") do |f|
+        f  << settings.to_yaml
+      end
+    rescue NoMethodError
+      add_project(project_name, branch_name)
     end
+  end
+  
+  def add_project(project_name, branch_name)
+    settings = get_settings
+    project = {project_name => {current_branch => branch_name}}
+    settings['default']['projects'].merge(project)
   end
 
 end
