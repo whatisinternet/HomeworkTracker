@@ -19,7 +19,6 @@ class Setting_Manager
     else
       settings['default']['projects'].merge!(project)
     end
-    puts settings.inspect
     save_yaml(settings)
   end
 
