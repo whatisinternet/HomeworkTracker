@@ -9,9 +9,28 @@ require 'yaml'
 
 class Setting_Manager
 
-  def get_settings
+  def add_project(project_name, branch_name)
+    settings = get_settings
+    project = {project_name => {'current_branch' => branch_name}}
+    settings['default']['projects'].merge!(project)
+    puts settings.inspect
     root_path = File.dirname(__FILE__)
-    settings = YAML::load(File.open("#{root_path}/settings.yml"))
+    File.open("#{root_path}/settings.yml", "w") do |f|
+      f  << settings.to_yaml
+    end
+  end
+
+  def create
+    settings = {'default' => {'directory' => 'HomeworkTracker/projects/',
+                              'projects' => ''}}
+    root_path = File.dirname(__FILE__)
+    File.open("#{root_path}/settings.yml", "w") do |f|
+      f  << settings.to_yaml
+    end
+  end
+  def get_branch(project_name)
+    settings = get_settings
+    settings['default']['projects'][project_name]['current_branch'].chomp.gsub('/n','')
   end
 
   def get_default_directory
@@ -19,9 +38,9 @@ class Setting_Manager
     ENV['HOME'] + "/#{settings['default']['directory']}"
   end
 
-  def get_branch(project_name)
-    settings = get_settings
-    settings['default']['projects'][project_name]['current_branch'].chomp.gsub('/n','')
+  def get_settings
+    root_path = File.dirname(__FILE__)
+    settings = YAML::load(File.open("#{root_path}/settings.yml"))
   end
 
   def set_branch(project_name, branch_name)
@@ -35,26 +54,6 @@ class Setting_Manager
       end
     rescue
       add_project(project_name, branch_name)
-    end
-  end
-
-  def add_project(project_name, branch_name)
-    settings = get_settings
-    project = {project_name => {'current_branch' => branch_name}}
-    settings['default']['projects'].merge!(project)
-    puts settings.inspect
-    root_path = File.dirname(__FILE__)
-    File.open("#{root_path}/settings.yml", "w") do |f|
-      f  << settings.to_yaml
-    end
-  end
-
-  def create_project(project_name)
-    settings = {'default' => {'directory' => 'HomeworkTracker/projects/',
-                              'projects' => ''}}
-    root_path = File.dirname(__FILE__)
-    File.open("#{root_path}/settings.yml", "w") do |f|
-      f  << settings.to_yaml
     end
   end
 
