@@ -39,7 +39,13 @@ class Setting_Manager
 
   def get_version(project_name)
     settings = get_settings
-    settings['default']['projects'][project_name]['version'].to_s.chomp
+    version = settings['default']['projects'][project_name]['version'].to_s.chomp
+    if version.nil?
+      ver = {'version' => 0.0}
+      settings['default']['projects'][project_name].merge!(ver)
+      get_version(project_name)
+    end
+    version
   end
 
   def save_yaml(settings_to_save)
