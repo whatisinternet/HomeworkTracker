@@ -1,11 +1,12 @@
 #>--------------------------------------------------------------<#
 # Author: Josh Teeter
 # Date: 2014-06-21
-# Purpose: To help people from loosing their damn homework!
+# Purpose: To help people from losing their damn homework!
 #>--------------------------------------------------------------<#
 #!/usr/bin/env ruby
 
 require_relative 'homework'
+require_relative 'setting_manager'
 require_relative 'project_watcher'
 
 class Main
@@ -27,6 +28,9 @@ class Main
 			pw = Project_Watcher.new
 		  	p1 = fork { pw.watch_project(project) }
 		  	Process.detach(p1)
+		elsif command.to_s == 'start'
+			sm = Setting_Manager.new
+			sm.create
 		else
 			puts ""
 			puts "Usage: homework [command] [project name]"

@@ -1,7 +1,7 @@
 #>--------------------------------------------------------------<#
 # Author: Josh Teeter
 # Date: 2014-06-21
-# Purpose: To help people from loosing their damn homework!
+# Purpose: To help people from losing their damn homework!
 #>--------------------------------------------------------------<#
 #!/usr/bin/env ruby
 root_path = File.dirname(__FILE__)
@@ -29,7 +29,15 @@ class HomeWork
 			puts "Missing project name!"
 		else
 
-			exec("mkdir #{@@default_directory}#{project_name.to_s} && cd #{@@default_directory}#{project_name.to_s} && git init && git checkout -b master && git commit --allow-empty -m 'first commit' && git checkout -b #{new_branch_name}")
+			exec("
+			mkdir #{@@default_directory}#{project_name.to_s} &&
+			cd #{@@default_directory}#{project_name.to_s} &&
+			git init &&
+			git checkout -b master &&
+			git commit --allow-empty -m 'first commit' &&
+			git checkout -b #{new_branch_name}
+			")
+
 			system("cd #{@@default_directory}#{project_name.to_s}")
 			save(project_name)
 		end
@@ -42,7 +50,12 @@ class HomeWork
 		if project_name.nil?
 			puts "Missing project name!"
 		else
-			exec("cd #{@@default_directory}#{project_name.to_s} && git checkout master && git merge #{current_branch} && git branch -D #{current_branch} && git checkout -b #{new_branch_name}")
+			exec("
+			cd #{@@default_directory}#{project_name.to_s} &&
+			git checkout master && git merge #{current_branch} &&
+			git branch -D #{current_branch} &&
+			git checkout -b #{new_branch_name}
+			")
 		end
 	end
 
@@ -52,7 +65,11 @@ class HomeWork
 		if project_name.nil?
 			puts "Missing project name!"
 		else
-			exec("cd #{@@default_directory}#{project_name.to_s} && git add --all . && git commit -m #{current_branch}")
+			exec("
+			cd #{@@default_directory}#{project_name.to_s} &&
+			git add --all . &&
+			git commit -m #{current_branch}
+			")
 		end
 	end
 
@@ -62,7 +79,10 @@ class HomeWork
 		if project_name.nil?
 			puts "Missing project name!"
 		else
-			exec("cd #{@@default_directory}#{project_name.to_s} && git log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat")
+			exec("
+			cd #{@@default_directory}#{project_name.to_s} &&
+			git log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat
+			")
 		end
 	end
 
@@ -75,7 +95,12 @@ class HomeWork
 		if project_name.nil?
 			puts "Missing project name!"
 		else
-			exec("cd #{@@default_directory}#{project_name.to_s} && git checkout master && git branch -D #{current_branch} && git checkout -b #{new_branch_name}")
+			exec("
+			cd #{@@default_directory}#{project_name.to_s} &&
+			git checkout master &&
+			git branch -D #{current_branch} &&
+			git checkout -b #{new_branch_name}
+			")
 		end
 	end
 
