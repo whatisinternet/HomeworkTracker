@@ -1,7 +1,7 @@
 #>--------------------------------------------------------------<#
 # Author: Josh Teeter
 # Date: 2014-06-21
-# Purpose: To help people from loosing their damn homework!
+# Purpose: To help people from losing their damn homework!
 #>--------------------------------------------------------------<#
 require 'fileutils'
 require 'time'
