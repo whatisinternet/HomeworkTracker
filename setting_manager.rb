@@ -43,6 +43,7 @@ class Setting_Manager
     if version.nil?
       project = {'projects' => {project_name => {'current_branch' => branch_name,'version' => '0.0'}}}
       settings['default'].merge!(project)
+      save_yaml(settings)
       get_version(project_name)
     end
     version
