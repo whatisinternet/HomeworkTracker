@@ -70,7 +70,8 @@ class HomeWork
 			exec("
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git add --all . &&
-			git commit -m #{current_branch}
+			git commit -m #{current_branch} &&
+			git tag -m #{current_branch.to_s.chomp}
 			")
 		end
 	end
