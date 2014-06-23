@@ -42,6 +42,7 @@ class Setting_Manager
     settings = get_settings
     project = {project_name => {'current_branch' => branch_name}}
     settings['default']['projects'].merge(project)
+    puts settings.inspect
     root_path = File.dirname(__FILE__)
     File.open("#{root_path}/settings.yml", "w") do |f|
       f  << settings.to_yaml
