@@ -20,20 +20,9 @@ class Setting_Manager
       settings['default']['projects'].merge!(project)
     end
     puts settings.inspect
-    root_path = File.dirname(__FILE__)
-    File.open("#{root_path}/settings.yml", "w") do |f|
-      f  << settings.to_yaml
-    end
+    save_yaml(settings)
   end
 
-  def create
-    settings = {'default' => {'directory' => 'HomeworkTracker/projects/',
-                              'projects' => ''}}
-    root_path = File.dirname(__FILE__)
-    File.open("#{root_path}/settings.yml", "w") do |f|
-      f  << settings.to_yaml
-    end
-  end
   def get_branch(project_name)
     settings = get_settings
     settings['default']['projects'][project_name]['current_branch'].chomp.gsub('/n','')
@@ -54,16 +43,19 @@ class Setting_Manager
     settings['default']['projects'][project_name]['version']
   end
 
+  def save_yaml(settings_to_save)
+    root_path = File.dirname(__FILE__)
+    File.open("#{root_path}/settings.yml", "w") do |f|
+      f  << settings_to_save.to_yaml
+    end
+  end
+
   def set_branch(project_name, branch_name)
     begin
       settings = get_settings
       settings['default']['projects'][project_name]['current_branch'] = branch_name
       settings['default']['projects'][project_name]['version'] = update_version(project_name)
-
-      root_path = File.dirname(__FILE__)
-      File.open("#{root_path}/settings.yml", "w") do |f|
-        f  << settings.to_yaml
-      end
+      save_yaml(settings)
     rescue
       add_project(project_name, branch_name)
     end
