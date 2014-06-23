@@ -59,8 +59,9 @@ class Setting_Manager
   def set_branch(project_name, branch_name)
     begin
       settings = get_settings
+      version = update_version(project_name)
       settings['default']['projects'][project_name]['current_branch'] = branch_name
-      settings['default']['projects'][project_name]['version'] = update_version(project_name).to_s.chomp
+      settings['default']['projects'][project_name]['version'] = version
       save_yaml(settings)
     rescue
       add_project(project_name, branch_name)
