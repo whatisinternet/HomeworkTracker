@@ -41,8 +41,8 @@ class Setting_Manager
     settings = get_settings
     version = settings['default']['projects'][project_name]['version'].to_s.chomp
     if version.nil?
-      ver = {'version' => 0.0}
-      settings['default']['projects'][project_name].merge!(ver)
+      project = {'projects' => {project_name => {{'current_branch' => branch_name}, {'version' => '0.0'}}}}
+      settings['default'].merge!(project)
       get_version(project_name)
     end
     version
