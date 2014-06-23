@@ -54,7 +54,7 @@ class Setting_Manager
     begin
       settings = get_settings
       settings['default']['projects'][project_name]['current_branch'] = branch_name
-      settings['default']['projects'][project_name]['version'] = update_version(project_name).to_s.chomp
+      #settings['default']['projects'][project_name]['version'] = update_version(project_name).to_s.chomp
       save_yaml(settings)
     rescue
       add_project(project_name, branch_name)
