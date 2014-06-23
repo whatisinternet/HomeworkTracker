@@ -19,6 +19,7 @@ class Setting_Manager
     else
       settings['default']['projects'].merge!(project)
     end
+    puts settings.inspect
     save_yaml(settings)
   end
 
@@ -39,7 +40,7 @@ class Setting_Manager
 
   def get_version(project_name)
     settings = get_settings
-    settings['default']['projects'][project_name]['version'].chomp
+    settings['default']['projects'][project_name]['version']
   end
 
   def save_yaml(settings_to_save)
