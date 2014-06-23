@@ -9,10 +9,6 @@ require_relative 'homework'
 require_relative 'setting_manager'
 require_relative 'project_watcher'
 
-require 'fileutils'
-require 'time'
-require 'yaml'
-
 class Main
 	def run(command, project)
 		
@@ -33,18 +29,11 @@ class Main
 		elsif command.to_s == 'changes?'
 			hw = HomeWork.new
 			hw.show_log(project)
-		elsif command.to_s == 'watch?'
+		elsif command.to_s == 'watch'
 			hw = HomeWork.new
 			pw = Project_Watcher.new
 		  	p1 = fork { pw.watch_project(project) }
 		  	Process.detach(p1)
-		elsif command.to_s == 'start'
-		    settings = {'default' => {'directory' => 'HomeworkTracker/projects/',
-		                              'projects' => ''}}
-		    root_path = File.dirname(__FILE__)
-		    File.open("#{root_path}/settings.yml", "w") do |f|
-		      f  << settings.to_yaml
-		    end
 		else
 			puts ""
 			puts "Usage: homework [command] [project name]"
