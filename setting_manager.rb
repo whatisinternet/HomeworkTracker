@@ -14,7 +14,7 @@ class Setting_Manager
     project = {project_name => {'current_branch' => branch_name}}
 
     if settings['default']['projects'].nil?
-      project = {'projects' => {project_name => {'current_branch' => branch_name}}}
+      project = {'projects' => {project_name => {'current_branch' => branch_name, 'version' => 0.0}}}
       settings['default'].merge!(project)
     else
       settings['default']['projects'].merge!(project)
