@@ -71,7 +71,7 @@ class HomeWork
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git add --all . &&
 			git commit -m #{current_branch}
-			git tag -a #{version.to_s}' &&
+			git tag -a #{version.to_s} &&
 			")
 		end
 	end
