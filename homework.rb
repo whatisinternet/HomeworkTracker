@@ -54,6 +54,7 @@ class HomeWork
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git checkout master &&
 			git merge #{current_branch} &&
+			git commit -m #{current_branch} &&
 			git tag -a v#{version.to_s} -m '#{current_branch}' &&
 			git branch -D #{current_branch} &&
 			git checkout -b #{new_branch_name}
