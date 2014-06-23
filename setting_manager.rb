@@ -40,13 +40,13 @@ class Setting_Manager
 
   def get_version(project_name)
     settings = get_settings
-    settings['default']['projects'][project_name]['version']
+    settings['default']['projects'][project_name]['version'].to_s.chomp
   end
 
   def save_yaml(settings_to_save)
     root_path = File.dirname(__FILE__)
     File.open("#{root_path}/settings.yml", "w") do |f|
-      f  << settings_to_save.chomp.to_yaml
+      f  << settings_to_save.to_yaml
     end
   end
 
