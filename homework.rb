@@ -5,7 +5,6 @@
 #>--------------------------------------------------------------<#
 #!/usr/bin/env ruby
 root_path = File.dirname(__FILE__)
-require_relative 'Homework_Files'
 require_relative 'setting_manager'
 require 'time'
 
