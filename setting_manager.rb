@@ -39,7 +39,7 @@ class Setting_Manager
 
   def get_version(project_name)
     settings = get_settings
-    settings['default']['projects'][project_name]['version']
+    settings['default']['projects'][project_name]['version'].chomp
   end
 
   def save_yaml(settings_to_save)
