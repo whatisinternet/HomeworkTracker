@@ -1,8 +1,0 @@
----
-default:
-  directory: HomeworkTracker/projects/
-  projects:
-    Homework:
-      current_branch: 2014-06-23T12-15-31-04-00
-    test_project:
-      current_branch: 2014-06-23T12-02-29-04-00
