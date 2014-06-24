@@ -5,8 +5,8 @@
 #>--------------------------------------------------------------<#
 #!/usr/bin/env ruby
 
-require_relative 'homework'
-require_relative 'project_watcher'
+require_relative 'lib/homework'
+require_relative 'lib/project_watcher'
 
 class Main
 	def run(command, project)
