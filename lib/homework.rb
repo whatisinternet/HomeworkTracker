@@ -56,7 +56,7 @@ class HomeWork
 			git checkout master &&
 			git merge #{current_branch} &&
 			git branch -D #{current_branch} &&
-			git fetch master &&
+			git fetch origin master &&
 			git rebase master &&
 			git checkout -b #{new_branch_name}
 			")
