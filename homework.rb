@@ -56,7 +56,7 @@ class HomeWork
 			git merge #{current_branch} &&
 			git branch -D #{current_branch} &&
 			git tag #{current_branch} &&
-			git checkout -b #{new_branch_name}
+			git checkout -b #{new_branch_name}>null
 			")
 		end
 	end
@@ -70,7 +70,7 @@ class HomeWork
 			exec("
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git add --all . &&
-			git commit -m #{current_branch}
+			git commit -m #{current_branch}>null
 			")
 		end
 	end
