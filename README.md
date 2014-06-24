@@ -1,9 +1,11 @@
 HomeworkTracker
 ===============
 
-Homework Tracker was created to provide an easy to use and understand wrapper for the git. The project is aimed at students not in computer science. THe project does not follow some of the most recommended practices with regards to git. e.g. meaningful commits.
+Homework Tracker was created to provide an easy to use and understand wrapper for the git. The project is aimed at students not in computer science. The project does not follow some of the most recommended practices with regards to git. e.g. meaningful commits.
 
 The idea is to provide students with something easy to use with low overhead.
+
+This project was created using HomeworkTracker as the git manager. For example commits see commits on this project.
 
 Current Requirements:
 ---------------------
