@@ -1,7 +1,9 @@
 #>--------------------------------------------------------------<#
 # Author: Josh Teeter
 # Date: 2014-06-21
-# Purpose: To help people from losing their damn homework!
+# Purpose: Homework Tracker was created to provide an easy to use and understand
+# wrapper for git. The idea is to provide students with something easy to use
+# with low overhead an nearly zero terminal knowledge.
 #>--------------------------------------------------------------<#
 #!/usr/bin/env ruby
 root_path = File.dirname(__FILE__)
