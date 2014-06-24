@@ -13,23 +13,26 @@ require_relative 'lib/project_watcher'
 class Main
 	def run(command, project)
 
-		#puts hw.branch_generator('')
+
 		if command == 'create'
 			hw = HomeWork.new
 			hw.create(project)
 			puts "Successfully created project #{project}"
-		elsif command == 'save'
-			hw = HomeWork.new
-			hw.save_for_now(project)
-		elsif command == 'undo'
-			hw = HomeWork.new
-			hw.undo(project)
-		elsif command.to_s == 'save!'
-			hw = HomeWork.new
-			hw.save(project)
 		elsif command.to_s == 'changes?'
 			hw = HomeWork.new
 			hw.show_log(project)
+		elsif command == 'save'
+			hw = HomeWork.new
+			hw.save_for_now(project)
+		elsif command.to_s == 'save!'
+			hw = HomeWork.new
+			hw.save(project)
+		elsif command.to_s == 'push'
+			hw = HomeWork.new
+			hw.push(project)
+		elsif command == 'undo'
+			hw = HomeWork.new
+			hw.undo(project)
 		elsif command.to_s == 'watch'
 			pw = Project_Watcher.new
 		  	p1 = fork { pw.watch_project(project) }
@@ -43,6 +46,8 @@ class Main
 			puts "		          save!    [saves the project] [cannot use undo]"
 			puts "		          undo     [reverts a save]"
 			puts "		          changes? [outputs the changes. press q to exit]"
+			puts "		          watch    [monitors the project and auto commits changes]"
+			puts "		          push     [push to remote]"
 			puts ""
 		end
 	end
