@@ -10,7 +10,7 @@ require_relative 'project_watcher'
 
 class Main
 	def run(command, project)
-		
+
 		#puts hw.branch_generator('')
 		if command == 'create'
 			hw = HomeWork.new

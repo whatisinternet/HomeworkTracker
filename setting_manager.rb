@@ -37,18 +37,6 @@ class Setting_Manager
     settings = YAML::load(File.open("#{root_path}/settings.yml"))
   end
 
-  def get_version(project_name)
-    settings = get_settings
-    version = settings['default']['projects'][project_name]['version'].to_s.chomp
-    if version.nil?
-      project = {'projects' => {project_name => {'current_branch' => branch_name,'version' => '0.0'}}}
-      settings['default'].merge!(project)
-      save_yaml(settings)
-      get_version(project_name)
-    end
-    version
-  end
-
   def save_yaml(settings_to_save)
     root_path = File.dirname(__FILE__)
     File.open("#{root_path}/settings.yml", "w") do |f|
@@ -61,16 +49,10 @@ class Setting_Manager
       settings = get_settings
       version = update_version(project_name)
       settings['default']['projects'][project_name]['current_branch'] = branch_name
-      settings['default']['projects'][project_name]['version'] = version
       save_yaml(settings)
     rescue
       add_project(project_name, branch_name)
     end
-  end
-
-  def update_version(project_name)
-    version.to_s.chomp = get_version(project_name)
-    version.to_s.chomp.to_i += 0.1
   end
 
 end

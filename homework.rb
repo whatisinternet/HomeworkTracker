@@ -47,7 +47,6 @@ class HomeWork
 
 		current_branch = @@setting_manager.get_branch(project_name)
 		new_branch_name = branch_generator(project_name)
-		version = @@setting_manager.get_version(project_name)
 		puts ''
 		puts 'Version' + version.to_s
 		if project_name.nil?
@@ -73,7 +72,7 @@ class HomeWork
 			exec("
 			cd #{@@default_directory}#{project_name.to_s} &&
 			git add --all . &&
-			git commit -m #{current_branch}&& git tag v#{current_branch}
+			git commit -m #{current_branch}
 			")
 		end
 	end
