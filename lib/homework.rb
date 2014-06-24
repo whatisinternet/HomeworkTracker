@@ -56,7 +56,7 @@ class HomeWork
 			git checkout master &&
 			git merge #{current_branch} &&
 			git branch -D #{current_branch} &&
-			git pull -rebase origin master &&
+			git pull --rebase=true origin master &&
 			git checkout -b #{new_branch_name}
 			")
 		end
