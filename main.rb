@@ -27,6 +27,9 @@ class Main
 		elsif command.to_s == 'save!'
 			hw = HomeWork.new
 			hw.save(project)
+		elsif command.to_s == 'pull'
+			hw = HomeWork.new
+			hw.pull(project)
 		elsif command.to_s == 'push'
 			hw = HomeWork.new
 			hw.push(project)
