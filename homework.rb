@@ -55,7 +55,7 @@ class HomeWork
 			git checkout master &&
 			git merge #{current_branch} &&
 			git branch -D #{current_branch} &&
-			git tag v#{current_branch} &&
+			git tag #{current_branch} &&
 			git checkout -b #{new_branch_name}
 			")
 		end
