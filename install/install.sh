@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo 'Setup the directories'
-mkdir ~/projects
 mkdir ~/HomeworkTracker
 mkdir ~/HomeworkTracker/projects
 mkdir ~/HomeworkTracker/projects/Homework
