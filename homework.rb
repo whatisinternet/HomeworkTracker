@@ -49,7 +49,7 @@ class HomeWork
 		new_branch_name = branch_generator(project_name)
 		version = @@setting_manager.get_version(project_name)
 		puts ''
-		puts 'Version' + version.to_s 
+		puts 'Version' + version.to_s
 		if project_name.nil?
 			puts "Missing project name!"
 		else
@@ -58,7 +58,7 @@ class HomeWork
 			git checkout master &&
 			git merge #{current_branch} &&
 			git branch -D #{current_branch} &&
-			git tag v#{version.to_s.chomp} &&
+			git tag v#{current_branch} &&
 			git checkout -b #{new_branch_name}
 			")
 		end
