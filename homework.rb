@@ -47,8 +47,6 @@ class HomeWork
 
 		current_branch = @@setting_manager.get_branch(project_name)
 		new_branch_name = branch_generator(project_name)
-		puts ''
-		puts 'Version' + version.to_s
 		if project_name.nil?
 			puts "Missing project name!"
 		else
