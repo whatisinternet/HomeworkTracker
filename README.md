@@ -1,0 +1,34 @@
+HomeworkTracker
+===============
+
+Homework Tracker was created to provide an easy to use and understand wrapper for the git. The project is aimed at students not in computer science. THe project does not follow some of the most recommended practices with regards to git. e.g. meaningful commits. 
+
+The idea is to provide students with something easy to use with low overhead.
+
+Current Requirements:
+---------------------
+
+Unix based system (untested on Mac OSX)
+RVM
+Ruby 2.1
+some knowledge of bash
+
+Usage:
+------
+
+#### Create a project:
+homework create [project_name]
+
+#### Automagically version (reversable, version set on save):
+homework watch [project_name]
+
+#### Create a reversable version:
+homework save [project_name]
+
+#### Create a non* reversable version:
+homework save! [project_name]
+
+#### Create a reverse a version:
+homework save [project_name]
+
+# This is a work in progress! USE AT YOUR OWN RISK! Features and options are subject to change at any time
