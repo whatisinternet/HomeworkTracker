@@ -7,11 +7,10 @@ The idea is to provide students with something easy to use with low overhead.
 
 Current Requirements:
 ---------------------
-
-Unix based system (untested on Mac OSX)
-RVM
-Ruby 2.1
-some knowledge of bash
+* Unix based system (untested on Mac OSX)
+* RVM
+* Ruby 2.1
+* some knowledge of bash
 
 Usage:
 ------
@@ -30,5 +29,12 @@ homework save! [project_name]
 
 #### Create a reverse a version:
 homework save [project_name]
+
+TODO:
+-----
+* Remote git repo support
+* Monitor all projects at once
+* GUI
+* Windows
 
 Features and options are subject to change at any time
